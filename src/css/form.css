@@ -3,17 +3,24 @@
   background: #fafafa;
   display: flex;
   flex-direction: column;
-  height: 50rem;
   justify-content: space-around;
-  width: 700px;
+  width: 45%
 }
 
-.form h1 {
+.form header {
   color: #444955;
   font-family: Verdana , Geneva , Tahoma , sans-serif;
-  font-size: 35px;
+  font-size: 16px;
   font-style: normal;
-  padding: 20px;
+  margin: 5rem 7rem 2rem;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 4rem;
+  flex-grow: 1;
 }
 
 .large-input {
