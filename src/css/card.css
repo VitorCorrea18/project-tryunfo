@@ -11,16 +11,16 @@
   font-family: Verdana , Geneva , Tahoma , sans-serif;
   font-size: 16px;
   font-style: normal;
-  margin: 5rem 7rem 5rem;
+  margin: 5rem 7rem;
 }
 
 
 .card-area {
   align-self: center;
   background: #fafafa;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   height: 549px;
   width: 368px;
-  border-radius: 10px;
 }
