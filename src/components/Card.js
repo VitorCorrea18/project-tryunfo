@@ -20,7 +20,7 @@ class Card extends React.Component {
           <h1>Pré-visualização</h1>
         </header>
         <div className="card-area">
-          <h4 data-testid="name-card">{cardName}</h4>
+          <h4 data-testid="name-card">{ cardName }</h4>
 
           <img
             src={ cardImage }

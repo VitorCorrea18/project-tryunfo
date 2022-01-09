@@ -30,7 +30,7 @@ class Form extends React.Component {
             <input
               data-testid="name-input"
               className="large-input has-label"
-              name="name"
+              name="cardName"
               type="text"
               maxLength={ 20 }
               value={ cardName }
@@ -44,7 +44,7 @@ class Form extends React.Component {
             <textarea
               data-testid="description-input"
               className="text-area has-label"
-              name="description"
+              name="cardDescription"
               type="text"
               value={ cardDescription }
               onChange={ onInputChange }
@@ -56,7 +56,7 @@ class Form extends React.Component {
             Aceleração
             <input
               data-testid="attr1-input"
-              name="attr1"
+              name="cardAttr1"
               type="number"
               value={ cardAttr1 }
               onChange={ onInputChange }
@@ -68,7 +68,7 @@ class Form extends React.Component {
             Velocidade
             <input
               data-testid="attr2-input"
-              name="attr2"
+              name="cardAttr2"
               type="number"
               value={ cardAttr2 }
               onChange={ onInputChange }
@@ -80,7 +80,7 @@ class Form extends React.Component {
             Direção
             <input
               data-testid="attr3-input"
-              name="attr3"
+              name="cardAttr3"
               type="number"
               value={ cardAttr3 }
               onChange={ onInputChange }
@@ -93,7 +93,7 @@ class Form extends React.Component {
             <input
               data-testid="image-input"
               className="has-label"
-              name="imagem"
+              name="cardImage"
               type="text"
               value={ cardImage }
               onChange={ onInputChange }
@@ -105,7 +105,7 @@ class Form extends React.Component {
             Raridade
             <select
               data-testid="rare-input"
-              name="raridade"
+              name="cardRare"
               className="large-input has-label"
               value={ cardRare }
               onChange={ onInputChange }
@@ -120,7 +120,7 @@ class Form extends React.Component {
             <input
               data-testid="trunfo-input"
               type="checkbox"
-              name="trunfo"
+              name="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ onInputChange }
             />
