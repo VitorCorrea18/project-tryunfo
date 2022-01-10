@@ -19,18 +19,43 @@ class App extends React.Component {
       cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
 
     // this.onInputChange = this.onInputChange.bind(this);
+    // arrow function não precisa bind *-*
+  }
+
+  checkAttr = () => {
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const maxAttr = 90;
+    const totalAttr = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
+    const maxTotalAttr = 210;
+    if (
+      ([cardAttr1, cardAttr2, cardAttr3].find((attr) => attr > maxAttr || attr < 0))
+      || totalAttr > maxTotalAttr
+    ) {
+      return false;
+    } return true;
+    // verifica se algum atributo é maior que 90 ou menor que 0, e depois verifica se
+    // a soma de todos os atributos é maior que o maximo.
+  }
+
+  checkForm = () => {
+    const keys = Object.keys(this.state);
+    const { state } = this;
+    if (!keys.find((key) => state[key] === '')) { // verifica se algum campo está vazio
+      if (this.checkAttr()) { // se a primeira condição for verdadeira, chama a checkAttr
+        this.setState({ isSaveButtonDisabled: false }); // se checkAttr voltar true abilita o botão alterando o estado.
+      } else this.setState({ isSaveButtonDisabled: true }); // se checkAttr voltar false mantém o botão desabilitado no estado.
+    } else this.setState({ isSaveButtonDisabled: true });
   }
 
   onInputChange = (event) => {
     const { name, value } = event.target;
-    console.log(value);
     this.setState({
       [name]: value,
-    });
+    }, this.checkForm);
   }
 
   onCheckboxChange = () => {
