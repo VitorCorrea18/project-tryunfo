@@ -1,8 +1,10 @@
 import React from 'react';
 import Form from './components/Form';
-import Card from './components/Card';
+// import Card from './components/Card';
+import PreView from './components/PreView';
 import './index.css';
 import './css/form.css';
+import './css/PreView.css';
 import './css/card.css';
 
 class App extends React.Component {
@@ -63,11 +65,19 @@ class App extends React.Component {
     }
   }
 
+  // verifica se o checkbox super trunfo está selecionado e marca a carta como super trunfo
   onCheckboxChange = () => {
     const { cardTrunfo } = this.state;
     if (!cardTrunfo) {
       this.setState({ cardTrunfo: true });
     } else this.setState({ cardTrunfo: false });
+  }
+
+  addTrunfo = () => {
+    console.log('funciona!');
+    this.setState({
+      hasTrunfo: true,
+    });
   }
 
   onSaveButtonClick = (event) => {
@@ -99,6 +109,7 @@ class App extends React.Component {
     cardImage: '',
     cardRare: 'normal',
     });
+    if (cardTrunfo === true) this.addTrunfo();
   }
 
   render() {
@@ -132,7 +143,7 @@ class App extends React.Component {
           onCheckboxChange={ this.onCheckboxChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-        <Card
+        <PreView
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
@@ -142,6 +153,16 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {/* <Card
+          cardName={ cardName }
+          cardDescription={ cardDescription }
+          cardAttr1={ cardAttr1 }
+          cardAttr2={ cardAttr2 }
+          cardAttr3={ cardAttr3 }
+          cardImage={ cardImage }
+          cardRare={ cardRare }
+          cardTrunfo={ cardTrunfo }
+        /> */}
       </div>
     );
   }
