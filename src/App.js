@@ -6,6 +6,7 @@ import './index.css';
 import './css/form.css';
 import './css/PreView.css';
 import './css/card.css';
+import AllCards from './components/AllCards';
 
 class App extends React.Component {
   constructor() {
@@ -80,6 +81,19 @@ class App extends React.Component {
     });
   }
 
+  addNewCard = (newCard) => {
+    this.setState((prevState) => ({
+      savedCards: [...prevState.savedCards, newCard],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    }));
+  }
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
     const { cardName,
@@ -90,8 +104,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo } = this.state;
-
-    this.setState({ savedCards: [{
+    const newCard = {
       Name: cardName,
       Description: cardDescription,
       Attr1: cardAttr1,
@@ -100,16 +113,9 @@ class App extends React.Component {
       Image: cardImage,
       Rare: cardRare,
       Trunfo: cardTrunfo,
-    }],
-    cardName: '',
-    cardDescription: '',
-    cardAttr1: '0',
-    cardAttr2: '0',
-    cardAttr3: '0',
-    cardImage: '',
-    cardRare: 'normal',
-    });
+    };
     if (cardTrunfo === true) this.addTrunfo();
+    this.addNewCard(newCard);
   }
 
   render() {
@@ -124,6 +130,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      savedCards,
     } = this.state;
 
     return (
@@ -153,16 +160,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        {/* <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        /> */}
+        <AllCards savedCards={ savedCards } />
       </div>
     );
   }
