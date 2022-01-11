@@ -75,9 +75,9 @@ class App extends React.Component {
   }
 
   addTrunfo = () => {
-    console.log('funciona!');
     this.setState({
       hasTrunfo: true,
+      cardTrunfo: false,
     });
   }
 
@@ -114,8 +114,12 @@ class App extends React.Component {
       Rare: cardRare,
       Trunfo: cardTrunfo,
     };
-    if (cardTrunfo === true) this.addTrunfo();
     this.addNewCard(newCard);
+    if (cardTrunfo === true) this.addTrunfo();
+  }
+
+  eraseTrunfo = () => {
+    this.setState({ hasTrunfo: false });
   }
 
   render() {
@@ -134,34 +138,41 @@ class App extends React.Component {
     } = this.state;
 
     return (
-      <div className="crate-card-section">
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.onInputChange }
-          onCheckboxChange={ this.onCheckboxChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <PreView
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        <AllCards savedCards={ savedCards } />
-      </div>
+      <>
+        <div className="crate-card-section">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onInputChange={ this.onInputChange }
+            onCheckboxChange={ this.onCheckboxChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <PreView
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </div>
+        <div>
+          <AllCards
+            savedCards={ savedCards }
+            eraseTrunfo={ this.eraseTrunfo }
+          />
+        </div>
+      </>
     );
   }
 }
