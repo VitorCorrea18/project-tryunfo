@@ -20,7 +20,7 @@ class Form extends React.Component {
 
     return (
 
-      <form className="form">
+      <form className="form" onSubmit={ onSaveButtonClick }>
         <header>
           <h1>Adicionar nova carta</h1>
         </header>
@@ -133,9 +133,9 @@ class Form extends React.Component {
 
           <button
             data-testid="save-button"
-            type="button"
+            type="submit"
             disabled={ isSaveButtonDisabled }
-            onClick={ onSaveButtonClick }
+            // onClick={ onSaveButtonClick }
           >
             Salvar
           </button>
