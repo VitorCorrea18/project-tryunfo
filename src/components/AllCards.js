@@ -30,51 +30,69 @@ class AllCards extends React.Component {
     const { savedCards } = this.props;
     const { filterInput } = this.state;
     return (
-      <div>
+      <div className="all-cards">
         <header><h1>Todas as cartas</h1></header>
-        <div>
-          <label
-            htmlFor="filter"
+        <section className="filters-section">
+          <h1>Filtro de busca</h1>
+          <input
+            data-testid="name-filter"
+            id="filterInput"
+            name="filterInput"
+            type="text"
+            placeholder="Nome da carta"
+            value={ filterInput }
+            onChange={ this.handleFilter }
+          />
+          <select
+            data-testid="rare-filter"
           >
-            Filtro de busca
+            <option disabled selected hidden className="select-exemple">Raridade</option>
+            <option value="todas">todas</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
+          </select>
+          <label htmlFor="filter-trunfo">
             <input
-              data-testid="name-filter"
-              id="filter"
-              name="filterInput"
-              type="text"
-              value={ filterInput }
-              onChange={ this.handleFilter }
+              data-testid="trunfo-filter"
+              id="filter-trunfo"
+              name="filter-trunfo"
+              type="checkbox"
+              className="is-trunfo"
             />
+            Super Trybe Trunfo
           </label>
-        </div>
-        <ul className="card-list">
-          {
-            savedCards
-              .filter((card) => card.name.includes(filterInput))
-              .map((card) => (
-                <div className="card-with-button" key={ card.name }>
-                  <Card
-                    cardName={ card.name }
-                    cardDescription={ card.description }
-                    cardAttr1={ card.attr1 }
-                    cardAttr2={ card.attr2 }
-                    cardAttr3={ card.attr3 }
-                    cardImage={ card.image }
-                    cardRare={ card.rare }
-                    cardTrunfo={ card.trunfo }
-                  />
-                  <button
-                    data-testid="delete-button"
-                    type="button"
-                    className="erase-btn"
-                    onClick={ this.onEraseButtonClick }
-                  >
-                    Excluir
-                  </button>
-                </div>
-              ))
-          }
-        </ul>
+        </section>
+        <main className="cards-display">
+          <ul className="card-list">
+            {
+              savedCards
+                .filter((card) => card.name.includes(filterInput))
+                .map((card) => (
+                  <div className="card-with-button" key={ card.name }>
+                    <Card
+                      cardName={ card.name }
+                      cardDescription={ card.description }
+                      cardAttr1={ card.attr1 }
+                      cardAttr2={ card.attr2 }
+                      cardAttr3={ card.attr3 }
+                      cardImage={ card.image }
+                      cardRare={ card.rare }
+                      cardTrunfo={ card.trunfo }
+                    />
+                    <button
+                      data-testid="delete-button"
+                      type="button"
+                      className="erase-btn"
+                      onClick={ this.onEraseButtonClick }
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                ))
+            }
+          </ul>
+        </main>
       </div>
     );
   }

@@ -2,9 +2,14 @@ html, body {
   margin: 0 auto 0;
 }
 
-.crate-card-section {
+.create-card-section {
   display: flex;
   flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+}
+
+.all-cards-section {
   height: 100vh;
   width: 100vw;
 }

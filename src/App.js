@@ -1,12 +1,12 @@
 import React from 'react';
 import Form from './components/Form';
-// import Card from './components/Card';
 import PreView from './components/PreView';
+import AllCards from './components/AllCards';
 import './index.css';
 import './css/form.css';
 import './css/PreView.css';
 import './css/card.css';
-import AllCards from './components/AllCards';
+import './css/AllCards.css';
 
 class App extends React.Component {
   constructor() {
@@ -139,7 +139,7 @@ class App extends React.Component {
 
     return (
       <>
-        <div className="crate-card-section">
+        <main className="create-card-section">
           <Form
             cardName={ cardName }
             cardDescription={ cardDescription }
@@ -165,13 +165,13 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
           />
-        </div>
-        <div>
+        </main>
+        <section className="all-cards-section">
           <AllCards
             savedCards={ savedCards }
             eraseTrunfo={ this.eraseTrunfo }
           />
-        </div>
+        </section>
       </>
     );
   }
