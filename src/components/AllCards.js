@@ -5,7 +5,18 @@ import Card from './Card';
 class AllCards extends React.Component {
   constructor() {
     super();
+    this.state = {
+      filterInput: '',
+    };
     this.onEraseButtonClick = this.onEraseButtonClick.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
+  }
+
+  handleFilter(event) {
+    const { value, name } = event.target;
+    this.setState({
+      [name]: value,
+    });
   }
 
   onEraseButtonClick({ target }) {
@@ -17,33 +28,51 @@ class AllCards extends React.Component {
 
   render() {
     const { savedCards } = this.props;
+    const { filterInput } = this.state;
     return (
       <div>
         <header><h1>Todas as cartas</h1></header>
+        <div>
+          <label
+            htmlFor="filter"
+          >
+            Filtro de busca
+            <input
+              data-testid="name-filter"
+              id="filter"
+              name="filterInput"
+              type="text"
+              value={ filterInput }
+              onChange={ this.handleFilter }
+            />
+          </label>
+        </div>
         <ul className="card-list">
           {
-            savedCards.map((card) => (
-              <div className="card-with-button" key={ card.Name }>
-                <Card
-                  cardName={ card.Name }
-                  cardDescription={ card.Description }
-                  cardAttr1={ card.Attr1 }
-                  cardAttr2={ card.Attr2 }
-                  cardAttr3={ card.Attr3 }
-                  cardImage={ card.Image }
-                  cardRare={ card.Rare }
-                  cardTrunfo={ card.Trunfo }
-                />
-                <button
-                  data-testid="delete-button"
-                  type="button"
-                  className="erase-btn"
-                  onClick={ this.onEraseButtonClick }
-                >
-                  Excluir
-                </button>
-              </div>
-            ))
+            savedCards
+              .filter((card) => card.name.includes(filterInput))
+              .map((card) => (
+                <div className="card-with-button" key={ card.name }>
+                  <Card
+                    cardName={ card.name }
+                    cardDescription={ card.description }
+                    cardAttr1={ card.attr1 }
+                    cardAttr2={ card.attr2 }
+                    cardAttr3={ card.attr3 }
+                    cardImage={ card.image }
+                    cardRare={ card.rare }
+                    cardTrunfo={ card.trunfo }
+                  />
+                  <button
+                    data-testid="delete-button"
+                    type="button"
+                    className="erase-btn"
+                    onClick={ this.onEraseButtonClick }
+                  >
+                    Excluir
+                  </button>
+                </div>
+              ))
           }
         </ul>
       </div>

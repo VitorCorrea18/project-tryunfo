@@ -105,14 +105,14 @@ class App extends React.Component {
       cardRare,
       cardTrunfo } = this.state;
     const newCard = {
-      Name: cardName,
-      Description: cardDescription,
-      Attr1: cardAttr1,
-      Attr2: cardAttr2,
-      Attr3: cardAttr3,
-      Image: cardImage,
-      Rare: cardRare,
-      Trunfo: cardTrunfo,
+      name: cardName,
+      description: cardDescription,
+      attr1: cardAttr1,
+      attr2: cardAttr2,
+      attr3: cardAttr3,
+      image: cardImage,
+      rare: cardRare,
+      trunfo: cardTrunfo,
     };
     this.addNewCard(newCard);
     if (cardTrunfo === true) this.addTrunfo();
