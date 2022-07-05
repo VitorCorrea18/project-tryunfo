@@ -3,7 +3,7 @@
 This project was developed during the web development course at [Trybe](https://www.betrybe.com/).
 The project is a front end application inspired by the Super Trunfo cards game where the user can create his onw car theme cards.
 
-<img src="./src/tryunfo.png" alt='screenshot' width="300">
+<img src="./tryunfo.png" alt='screenshot' width="500">
 
 ## Installation
 
